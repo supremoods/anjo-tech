@@ -13,7 +13,7 @@
 
             $google_service = new Google_Service_Oauth2($google_client);
 
-            $data = $google_service->userinfo->get();
+            $data = $google_service->userinfo_v2_me->get();
 
             if(!empty($data['given_name'])){
                 $_SESSION['user_first_name'] = $data['given_name'];
