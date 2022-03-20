@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2022 at 11:52 AM
+-- Generation Time: Mar 20, 2022 at 12:08 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `twitter`
+-- Database: `anjo-tech`
 --
 
 -- --------------------------------------------------------
@@ -30,13 +30,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `account_user` (
   `id` int(11) NOT NULL,
   `unique_id` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
   `phone` int(50) DEFAULT NULL,
   `email` varchar(65) DEFAULT NULL,
-  `password` varchar(65) NOT NULL,
+  `password` varchar(65) DEFAULT NULL,
   `avatar` varchar(255) NOT NULL,
   `date_of_birth` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `account_user`
+--
+
+INSERT INTO `account_user` (`id`, `unique_id`, `firstname`, `lastname`, `phone`, `email`, `password`, `avatar`, `date_of_birth`) VALUES
+(8, 'u62370aed23d82', 'Jerico', 'Victoria', NULL, 'jericovic64@gmail.com', NULL, 'https://lh3.googleusercontent.com/a/AATXAJwQXb4BfNbg3tK7v1xeLfA1wAdsbhD_WQoMSnCt=s96-c', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -171,7 +179,7 @@ ALTER TABLE `tweet_reply`
 -- AUTO_INCREMENT for table `account_user`
 --
 ALTER TABLE `account_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `follows`

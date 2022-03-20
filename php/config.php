@@ -7,9 +7,10 @@
 
     $google_client->setClientSecret('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');
 
-    $google_client->setRedirectUri('http://localhost/index.php');
+    $google_client->setRedirectUri('http://localhost/signup.php');
 
     $google_client->addScope('email');
     $google_client->addScope('profile');
+
     session_start();
 ?>

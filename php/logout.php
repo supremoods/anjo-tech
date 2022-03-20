@@ -6,6 +6,6 @@
 
     session_destroy();
 
-    header('location: ../index.php');
+    header('location: ../signup.php');
 
 ?>

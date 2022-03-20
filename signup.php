@@ -1,5 +1,8 @@
 <?php
+
     include('php/config.php');
+    include('php/db-config.php');
+    include('php/signup-google.php');
 
     $loginButton = "";
 
@@ -14,25 +17,32 @@
             $google_service = new Google_Service_Oauth2($google_client);
 
             $data = $google_service->userinfo_v2_me->get();
-
+            
             if(!empty($data['given_name'])){
-                $_SESSION['user_first_name'] = $data['given_name'];
-            }
 
-            if(!empty($data['family_name'])){
-                $_SESSION['user_last_name'] = $data['family_name'];
-            }
+                $email = $data['email'];
+                $firstname = $data['given_name'];
+                $lastname = $data['family_name'];
+                $avatar = $data['picture']; 
+                $_SESSION['user_first_name'] = $firstname;
+                $_SESSION['user_last_name'] = $lastname;
+                $_SESSION['user_email'] = $email;
+                $_SESSION['user_image'] = $avatar;
+                $query = mysqli_query($conn, "SELECT * FROM account_user WHERE email = '$email'");
+                $count = mysqli_num_rows($query);
 
-            if(!empty($data['email'])){
-                $_SESSION['user_email_address'] = $data['email'];
-            }
-
-            if(!empty($data['gender'])){
-                $_SESSION['user_gender'] = $data['gender'];
-            }
-
-            if(!empty($data['picture'])){
-                $_SESSION['user_image'] = $data['picture'];
+                if(!$count){
+                    $uid = uniqid('u');
+                    $query = mysqli_query($conn, "INSERT INTO `account_user`(`id`, `unique_id`, `firstname`, `lastname`, `email`, `avatar`) VALUES (NULL,'$uid','$firstname','$lastname','$email','$avatar')") or die(mysqli_error($conn));
+                    
+                    if($query){
+                        header ("location:../home.php");
+                    }else{
+                        echo "Failed.";
+                    }
+                } else {
+                    header ("location:../home.php");
+                }
             }
         }
     }
@@ -61,12 +71,9 @@
 
                 if($loginButton == ""){
                     echo'
-                        <div class="panel-heading">WELCOME USER</div>
-                        <div class="panel-body">
-                            <img src="'.$_SESSION['user_image'].'" class="img-responsive img-circle img-thumbnail"/>
-                        </div>
                         <h3>'.$_SESSION['user_first_name'].'</h3>
                         <h3><a href="php/logout.php">Log out</a></h3>
+
                     ';
                 } else {
                     echo '
@@ -76,6 +83,7 @@
 
             ?>
         </div>
+
     </div>
 </body>
 </html>
