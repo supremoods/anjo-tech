@@ -2,9 +2,9 @@
 
     session_start();
 
-    // if(!isset($_SESSION['user_email_address'])){
-    //     header('location: signup.php');
-    // }
+    if(!isset($_SESSION['user_email'])){
+        header('location: signup.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,6 @@
                 <img src="'.$_SESSION['user_image'].'" class="img-responsive img-circle img-thumbnail"/>
             </div>
             <h3>'.$_SESSION['user_first_name'].'</h3>
-            <h3>'.$_SESSION['user_last_name'].'</h3>
             <h3>'.$_SESSION['user_email'].'</h3>
             <h3><a href="php/logout.php">Log out</a></h3>
         ';
