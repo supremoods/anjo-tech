@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 12:08 PM
+-- Generation Time: Mar 23, 2022 at 01:10 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `account_user` (
   `id` int(11) NOT NULL,
   `unique_id` varchar(255) NOT NULL,
-  `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
   `phone` int(50) DEFAULT NULL,
   `email` varchar(65) DEFAULT NULL,
   `password` varchar(65) DEFAULT NULL,
@@ -43,8 +43,8 @@ CREATE TABLE `account_user` (
 -- Dumping data for table `account_user`
 --
 
-INSERT INTO `account_user` (`id`, `unique_id`, `firstname`, `lastname`, `phone`, `email`, `password`, `avatar`, `date_of_birth`) VALUES
-(8, 'u62370aed23d82', 'Jerico', 'Victoria', NULL, 'jericovic64@gmail.com', NULL, 'https://lh3.googleusercontent.com/a/AATXAJwQXb4BfNbg3tK7v1xeLfA1wAdsbhD_WQoMSnCt=s96-c', '0000-00-00');
+INSERT INTO `account_user` (`id`, `unique_id`, `name`, `username`, `phone`, `email`, `password`, `avatar`, `date_of_birth`) VALUES
+(1, 'u62370aed23d82', 'Jerico', NULL, NULL, 'jericovic64@gmail.com', NULL, 'https://lh3.googleusercontent.com/a/AATXAJwQXb4BfNbg3tK7v1xeLfA1wAdsbhD_WQoMSnCt=s96-c', '0000-00-00');
 
 -- --------------------------------------------------------
 
