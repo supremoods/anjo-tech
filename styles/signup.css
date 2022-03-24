@@ -1,4 +1,4 @@
-.form-container{
+.form-container-input, .form-container-verify{
     display: none;
     background-color: rgba(0, 0, 0, .3);
     position: fixed;
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-#signup-input{
+#signup-input, #verify-input{
     background: yellow;    
     position: absolute;
     top: 50%;
