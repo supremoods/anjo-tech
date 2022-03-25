@@ -7,7 +7,7 @@
 
     $google_client->setClientSecret('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');
 
-    $google_client->setRedirectUri('http://localhost/lappus_tech/signup.php');
+    $google_client->setRedirectUri('http://localhost/signup.php');
 
     $google_client->addScope('email');
     $google_client->addScope('profile');
