@@ -54,12 +54,12 @@
             $query = mysqli_query($conn, "INSERT INTO `account_user`(`id`, `unique_id`, `name`, `username`, `email`, `avatar`) VALUES (NULL,'$uid','$user_fname', '$user_username','$user_email','$user_avatar')") or die(mysqli_error($conn));
             
             if($query){
-                echo '<script>window.location.href="http://localhost/home.php"</script>';
+                echo '<script>window.location.href="http://localhost/lappus_tech/home.php"</script>';
             }else{
                 echo "Failed.";
             }
         } else {
-            echo '<script>window.location.href="http://localhost/home.php"</script>';
+            echo '<script>window.location.href="http://localhost/lappus_tech/home.php"</script>';
         }
     }
 
@@ -133,7 +133,7 @@
             $data = mysqli_fetch_array($query);
             $db_code = $data['verification_code'];
             if($code == $db_code){
-                createAccount($raw_email, $raw_username, NULL, "../assets/images/default-avatar.jpg");
+                createAccount($raw_email, $raw_username, NULL, "../lappus_tech//assets/images/default-avatar.jpg");
             } else {
                 echo 'Wrong verification code';
             }
