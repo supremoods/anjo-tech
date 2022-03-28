@@ -43,13 +43,14 @@
 
     function createAccount($user_email, $user_username, $user_fname, $user_avatar){
         global $conn;
-        @session_start();
-        $_SESSION['user_first_name'] = $user_fname;
-        $_SESSION['user_email'] = $user_email;
-        $_SESSION['user_image'] = $user_avatar;
+        
         $query = mysqli_query($conn, "SELECT * FROM account_user WHERE email = '$user_email'");
         $count = mysqli_num_rows($query);
         if(!$count){
+            @session_start();
+            $_SESSION['user_first_name'] = $user_fname;
+            $_SESSION['user_email'] = $user_email;
+            $_SESSION['user_image'] = $user_avatar;
             $uid = uniqid('u');
             $query = mysqli_query($conn, "INSERT INTO `account_user`(`id`, `unique_id`, `name`, `username`, `email`, `avatar`) VALUES (NULL,'$uid','$user_fname', '$user_username','$user_email','$user_avatar')") or die(mysqli_error($conn));
             
@@ -59,8 +60,9 @@
                 echo "Failed.";
             }
         } else {
-            echo '<script>window.location.href="http://localhost/home.php"</script>';
-        }
+            echo '<script>window.location.href="http://localhost/index.php"</script>';
+            
+        }    
     }
 
     if(isset($_GET["code"])){
@@ -93,7 +95,6 @@
         if(mysqli_num_rows($query) != 0){
                 echo 'User already exist. Proceed to <a href="login.php">Login</a>';
         } else {
-            $form= '';
             echo '
                 <script>
                 let form = $(".form-container-verify");

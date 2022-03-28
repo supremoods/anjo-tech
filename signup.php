@@ -1,6 +1,6 @@
 <?php
     include('php/db-config.php');
-    include('php/config.php');
+    include('php/signup-config.php');
     include('php/signup-functions.php');
 ?>
 

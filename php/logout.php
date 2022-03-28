@@ -1,11 +1,11 @@
 <?php
 
     include("config.php");
-
+    session_destroy();
     $google_client->revokeToken();
 
-    session_destroy();
+   
 
-    header('location: ../signup.php');
+
 
 ?>

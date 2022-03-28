@@ -70,6 +70,10 @@ $('#signup-input').submit(function (e) {
     });
 });
 
+
+$('#login-in-google').click(function (e) { 
+    $('.form-container-verify').load("../php/createAuthUrl.php");
+});
 function verifySubmit() {
     let code = $("#code").val();
     let name = $('#name').val();
@@ -80,3 +84,14 @@ function verifySubmit() {
         name: name
     });
 }
+
+function verifyAccountSubmit() {
+    let code = $("#code").val();
+    $('#verification-respond').load("../php/verifyCode.php", {
+        vcode: code
+    });
+}
+
+
+
+      

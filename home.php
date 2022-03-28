@@ -1,5 +1,5 @@
 <?php
-
+ include('php/db-config.php');
     session_start();
 
     if(!isset($_SESSION['user_email'])){
@@ -17,14 +17,22 @@
 </head>
 <body>
     <h1>HOME.php</h1>
+    
     <?php
+
+    global $conn;
+
+    $foo = $_SESSION['user_email'];
+            
+    $query = mysqli_query($conn, "SELECT * FROM account_user WHERE email = '$foo'");
+    $fetch = mysqli_fetch_array($query);
         echo'
             <div class="panel-body">
-                <img src="'.$_SESSION['user_image'].'" class="img-responsive img-circle img-thumbnail"/>
+                <img src="'.$fetch['avatar'].'" class="img-responsive img-circle img-thumbnail"/>
             </div>
-            <h3>'.$_SESSION['user_first_name'].'</h3>
-            <h3>'.$_SESSION['user_email'].'</h3>
-            <h3><a href="php/logout.php">Log out</a></h3>
+            <h3>'.$fetch['name'].'</h3>
+            <h3>'.$fetch['email'].'</h3>
+            <h3><a href="index.php">Log out</a></h3>
         ';
     ?>
 </body>
